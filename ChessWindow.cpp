@@ -2,7 +2,7 @@
 #include <iostream>
 
 // Constructor for ChessWindow.
-ChessWindow::ChessWindow(): AnimationWindow{400, 50, 800, 800, "Chess 2"} {
+ChessWindow::ChessWindow(): AnimationWindow{400, 50, 800, 800, "Chess 2"}, gameOver{{300, 350}, 200, 100} {
     board = Board();
 }
 
@@ -13,6 +13,7 @@ void ChessWindow::play() {
     while (!should_close()) {
         // Handle inputs.
         handleClick();
+        
         
         // Draw things.
         drawTiles();
@@ -147,6 +148,18 @@ void ChessWindow::handleClick() {
         auto& boardRef = board.getBoardRef();
         Tile& randomMove = boardRef.at(randomTile -> getX()).at(randomTile -> getY());
         boardRef.at(y / 100).at(x / 100).setPiece(nullptr);
+
+        // This is game over.
+        if (randomMove.getPiece() != nullptr && randomMove.getPiece() -> getPieceType() == PieceType::King) {
+            gameIsOver = true;
+            if (randomMove.getPiece() -> getIsWhite()) {
+                gameOver.setText("Black wins!");
+            }
+            else if (!(randomMove.getPiece() -> getIsWhite())) {
+                gameOver.setText("White wins!");
+            }
+            add(gameOver);
+        }
 
         // If the piece being moved is either a rook or king, we want to signify that the piece has moved, such that
         // castling can be handled properly.<

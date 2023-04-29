@@ -4,6 +4,8 @@
 #include "Image.h"
 #include <random>
 #include <cstdlib>
+#include "widgets/TextInput.h"
+
 class ChessWindow: public TDT4102::AnimationWindow {
     public:
         ChessWindow();
@@ -19,4 +21,6 @@ class ChessWindow: public TDT4102::AnimationWindow {
     private:
         Board board;
         bool isWhitesTurn = true;
+        bool gameIsOver = false;
+        TDT4102::TextInput gameOver;
 };
