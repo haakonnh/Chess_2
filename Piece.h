@@ -30,17 +30,19 @@ class Piece {
         bool getIsDead() { return isDead; };
         void setIsDead(bool isDead) { this->isDead = isDead; };
 
+        void printOk() {std::cout << "OK" << std::endl;};
+
         // Does maybe not have to be public, idk because of inheritance. 
         std::vector<std::shared_ptr<Tile>> possibleMoves;
 
         // Adds diagonal moves to the possibleMoves vector if legal.
-        void addDiagonalMoves(int row, int col, Board);
+        void addDiagonalMoves(int row, int col, Board& board);
 
         // Adds straight moves to the possibleMoves vector if legal.
-        void addStraightMoves(int row, int col, Board board);
+        void addStraightMoves(int row, int col, Board& board);
 
         // Adds a move to the possibleMoves vector.
-        void addMove(int row, int col, Board board);
+        void addMove(int row, int col, Board& board);
         
         void setPieceType(PieceType pieceType) {this -> pieceType = pieceType;};
         PieceType getPieceType() {return pieceType;};
@@ -48,11 +50,11 @@ class Piece {
         bool getHasMoved() {return hasMoved;};
 
         // Pure virtual / abstract class.
-        virtual void calculatePossibleMoves(Board board, Tile currentTile) = 0;
+        virtual void calculatePossibleMoves(Board& board, Tile& currentTile) = 0;
         virtual std::string getImage() = 0;
         virtual ~Piece() {};
 
-    private: 
+    protected: 
         bool isWhite;
         bool isDead = false;
         PieceType pieceType = PieceType::NONE;
@@ -64,40 +66,40 @@ class Pawn: public Piece {
     public:
         Pawn(bool isWhite): Piece(isWhite) {setPieceType(PieceType::Pawn);};
         std::string getImage() override { return getIsWhite() ? "WhitePawn.png" : "BlackPawn.png"; };
-        void calculatePossibleMoves(Board board, Tile currentTile) override;
+        void calculatePossibleMoves(Board& board, Tile& currentTile) override;
 };
 
 class Knight: public Piece {
     public:
         Knight(bool isWhite): Piece(isWhite) {setPieceType(PieceType::Knight);};
         std::string getImage() override { return getIsWhite() ? "WhiteKnight.png" : "BlackKnight.png"; };
-        void calculatePossibleMoves(Board board, Tile currentTile) override;
+        void calculatePossibleMoves(Board& board, Tile& currentTile) override;
 };
 
 class Bishop: public Piece {
     public:
         std::string getImage() override { return getIsWhite() ? "WhiteBishop.png" : "BlackBishop.png"; };
         Bishop(bool isWhite): Piece(isWhite) {setPieceType(PieceType::Bishop);};
-        void calculatePossibleMoves(Board board, Tile currentTile) override;
+        void calculatePossibleMoves(Board& board, Tile& currentTile) override;
 };
 
 class Rook: public Piece {
     public:
         std::string getImage() override { return getIsWhite() ? "WhiteRook.png" : "BlackRook.png"; };
         Rook(bool isWhite): Piece(isWhite) {setPieceType(PieceType::Rook);};
-        void calculatePossibleMoves(Board board, Tile currentTile) override;
+        void calculatePossibleMoves(Board& board, Tile& currentTile) override;
 };
 
 class Queen: public Piece {
     public:
         std::string getImage() override { return getIsWhite() ? "WhiteQueen.png" : "BlackQueen.png"; };
         Queen(bool isWhite): Piece(isWhite) {setPieceType(PieceType::Queen);};  
-        void calculatePossibleMoves(Board board, Tile currentTile) override;
+        void calculatePossibleMoves(Board& board, Tile& currentTile) override;
 };
 
 class King: public Piece {
     public:
         std::string getImage() override { return getIsWhite() ? "WhiteKing.png" : "BlackKing.png"; };
         King(bool isWhite): Piece(isWhite) {setPieceType(PieceType::King);};
-        void calculatePossibleMoves(Board board, Tile currentTile) override;
+        void calculatePossibleMoves(Board& board, Tile& currentTile) override;
 };

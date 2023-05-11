@@ -6,6 +6,7 @@
 int main() {
     ChessWindow chess2;
     chess2.play();
+    chess2.wait_for_close();
     return 0;
 }
 

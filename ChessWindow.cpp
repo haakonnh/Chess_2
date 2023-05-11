@@ -30,7 +30,7 @@ void ChessWindow::drawTiles() {
             for (int j = 0; j < 8; j++) {
 
                 // Draws a green square if the tile is a possible move.
-                if (board.getBoard().at(i).at(j).getIsPossibleMove()) {
+                if (board.getBoardRef().at(i).at(j).getIsPossibleMove()) {
                     draw_rectangle({j*100, i*100}, 100, 100, TDT4102::Color::light_green);
                 }
                 
@@ -49,8 +49,8 @@ void ChessWindow::drawTiles() {
 
 // Draws pieces on board.
 void ChessWindow::drawPieces() {
-    for (auto& row: board.getBoard()) {
-        for (Tile tile: row) {
+    for (auto& row: board.getBoardRef()) {
+        for (Tile& tile: row) {
             if (tile.getPiece() != nullptr) {
                 // place image at current square
                 TDT4102::Image image = TDT4102::Image("img/" + tile.getPiece()->getImage());
@@ -72,14 +72,12 @@ void ChessWindow::handleClick() {
         // Convert coords to row and col
         TDT4102::Point mouseCoords = get_mouse_coordinates();
         // Get tile
-        Tile clickedTile = getTile(mouseCoords.x, mouseCoords.y);
-        
+        Tile& clickedTile = getTile(mouseCoords.x, mouseCoords.y);
         // If clicked tile has no piece, return
         if (clickedTile.getPiece() == nullptr) {
             std::cout << "nullptr" << std::endl;
             return;
         }
-
         // If it aint your turn, you cant check possible moves
         if (clickedTile.getPiece() -> getIsWhite() != isWhitesTurn) return;
 
@@ -123,16 +121,20 @@ void ChessWindow::handleClick() {
     if (currentLeftClickState && !lastLeftClickState) {
         int x = get_mouse_coordinates().x;
         int y = get_mouse_coordinates().y;
-        Tile clickedTile = getTile(x, y);
-
+        Tile& clickedTile = getTile(x, y);
         // That aint a piece
-        if (clickedTile.getPiece() == nullptr) return;
-        
+        if (clickedTile.getPiece() == nullptr) {
+            std::cout << "nullptr" << std::endl;
+            return;
+        }
+        // Print "nullptr" to console if clicked tile has no piece
+
+
+
         // It aint your turn man
         if (clickedTile.getPiece() -> getIsWhite() != isWhitesTurn) return;
         // Clear coloring for possible moves.
         clearIsPossibleMove();
-        
 
         // Calculate possible moves, so that random move is chosen cororectly. 
         clickedTile.getPiece() -> calculatePossibleMoves(board, clickedTile);
@@ -144,7 +146,7 @@ void ChessWindow::handleClick() {
         auto randomTile = (possibleMoves.at(generatedNumber)).get();
 
         // Move piece to random square.
-        Piece* selectedPiece = clickedTile.getPiece();
+        std::unique_ptr<Piece> selectedPiece = clickedTile.movePiece();
         auto& boardRef = board.getBoardRef();
         Tile& randomMove = boardRef.at(randomTile -> getX()).at(randomTile -> getY());
         boardRef.at(y / 100).at(x / 100).setPiece(nullptr);
@@ -170,7 +172,7 @@ void ChessWindow::handleClick() {
         // Logic for queening.
         if (selectedPiece -> getPieceType() == PieceType::Pawn && (randomMove.getX() == 0 || randomMove.getX() == 7 )) {
             bool color = selectedPiece -> getIsWhite();
-            randomMove.setPiece(new Queen(color));
+            randomMove.setPiece(std::make_unique<Queen>(Queen(color)));
             std::cout << "Queen" << std::endl;
         }
        
@@ -180,24 +182,24 @@ void ChessWindow::handleClick() {
             std::cout << abs(randomMove.getY() - clickedTile.getY()) << " abs." <<std::endl;
             if (abs(randomMove.getY() - clickedTile.getY()) > 1) {
                 if (clickedTile.getY() > randomMove.getY()) { // castle queenside - left.
-                    Piece* castleRook = boardRef.at(y / 100).at((x / 100) - 4).getPiece();
+                    std::unique_ptr<Piece> castleRook = boardRef.at(y / 100).at((x / 100) - 4).movePiece();
                     boardRef.at(y / 100).at((x / 100) - 4).setPiece(nullptr);
-                    randomMove.setPiece(selectedPiece);
-                    boardRef.at(clickedTile.getX()).at(clickedTile.getY() - 1).setPiece(castleRook);    
+                    randomMove.setPiece(std::move(selectedPiece));
+                    boardRef.at(clickedTile.getX()).at(clickedTile.getY() - 1).setPiece(std::move(castleRook));    
                 }
                 else { // castle kingside - right
-                    Piece* castleRook = boardRef.at(y / 100).at((x / 100) + 3).getPiece();
+                    std::unique_ptr<Piece> castleRook = boardRef.at(y / 100).at((x / 100) + 3).movePiece();
                     boardRef.at(y / 100).at((x / 100) + 3).setPiece(nullptr);
-                    randomMove.setPiece(selectedPiece);
+                    randomMove.setPiece(std::move(selectedPiece));
                     boardRef.at(clickedTile.getX()).at(clickedTile.getY()).setPiece(nullptr);
-                    boardRef.at(clickedTile.getX()).at(clickedTile.getY() + 1).setPiece(castleRook);
+                    boardRef.at(clickedTile.getX()).at(clickedTile.getY() + 1).setPiece(std::move(castleRook));
 
                 }
             }
         }
-        else randomMove.setPiece(selectedPiece);
+        else randomMove.setPiece(std::move(selectedPiece));
         std::cout << "Move to: " << randomMove.getY() << ", " << randomMove.getX() << std::endl;
-        std::cout << pieceTypeMap.at(selectedPiece -> getPieceType() ) << " moved." << std::endl;
+        // std::cout << pieceTypeMap.at(selectedPiece -> getPieceType() ) << " moved." << std::endl;
         isWhitesTurn = !isWhitesTurn;
     }
 
@@ -217,8 +219,8 @@ void ChessWindow::clearIsPossibleMove() {
 
 // Return clicked tile
 // ! This might have to return a reference?
-Tile ChessWindow::getTile(int x, int y) {
-    return board.getBoard().at(y / 100).at(x / 100);
+Tile& ChessWindow::getTile(int x, int y) {
+    return board.getBoardRef().at(y / 100).at(x / 100);
 }
 
 // Return random number in specific range

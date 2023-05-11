@@ -4,12 +4,12 @@
 // The purpose of this is to calculate all possible moves, and then when a piece
 // is held up, the possible moves will be highlighted. 
 
-void Piece::addMove(int row, int col, Board board) {
+void Piece::addMove(int row, int col, Board& board) {
     auto& boardRef = board.getBoardRef();
     possibleMoves.push_back(std::make_shared<Tile>(boardRef.at(row).at(col)));
     
 }
-void Pawn::calculatePossibleMoves(Board board, Tile currentTile) {
+void Pawn::calculatePossibleMoves(Board& board, Tile& currentTile) {
     // Reset possibleMoves vector and retrieve row and col from mouse position. 
     possibleMoves = {};
     int row = currentTile.getX();
@@ -18,30 +18,30 @@ void Pawn::calculatePossibleMoves(Board board, Tile currentTile) {
     // This prints out the coordinates of pressed pawn. 
     std::cout << "Pawn at: " << col << ", " << row << std::endl;
 
-    if (!getIsWhite()) {
+    if (!isWhite) {
         if (row != 7) { // black pawn is not last rank.
-            if (board.getBoard().at(row + 1).at(col).getPiece() == nullptr) {
+            if (board.getBoardRef().at(row + 1).at(col).getPiece() == nullptr) {
                 addMove(row + 1, col, board);
             }
 
             // Captures.
             if (col + 1 < 8) {
-                Piece* upRightPiece = board.getBoard().at(row + 1).at(col + 1).getPiece();
-                if (upRightPiece != nullptr && upRightPiece->getIsWhite() != getIsWhite()) {
+                Piece* upRightPiece = board.getBoardRef().at(row + 1).at(col + 1).getPiece();
+                if (upRightPiece != nullptr && upRightPiece->getIsWhite() != isWhite) {
                     addMove(row + 1, col + 1, board);
                 }
             }
             if (col - 1 >= 0) {
-                Piece* upLeftPiece = board.getBoard().at(row + 1).at(col - 1).getPiece();
-                if (upLeftPiece != nullptr && upLeftPiece -> getIsWhite() != getIsWhite()) {
+                Piece* upLeftPiece = board.getBoardRef().at(row + 1).at(col - 1).getPiece();
+                if (upLeftPiece != nullptr && upLeftPiece -> getIsWhite() != isWhite) {
                     addMove(row + 1, col - 1, board);
                 }
             }
             
         }
         if (row == 1) { // black pawn is on second rank
-            if (board.getBoard().at(row + 2).at(col).getPiece() == nullptr &&
-            board.getBoard().at(row + 1).at(col).getPiece() == nullptr) {
+            if (board.getBoardRef().at(row + 2).at(col).getPiece() == nullptr &&
+            board.getBoardRef().at(row + 1).at(col).getPiece() == nullptr) {
                 addMove(row + 2, col, board);
             }
         }
@@ -50,32 +50,33 @@ void Pawn::calculatePossibleMoves(Board board, Tile currentTile) {
     }
     else {
         if (row != 0) { // white pawn is not on second rank and not on last rank.
-            if (board.getBoard().at(row - 1).at(col).getPiece() == nullptr) {
+            if (board.getBoardRef().at(row - 1).at(col).getPiece() == nullptr) {
                 addMove(row - 1, col, board);
             }
             // Captures.
             if (col + 1 < 8) {
-                Piece* downRightPiece = board.getBoard().at(row - 1).at(col + 1).getPiece();
-                if (downRightPiece != nullptr && downRightPiece->getIsWhite() != getIsWhite()) {
+                Piece* downRightPiece = board.getBoardRef().at(row - 1).at(col + 1).getPiece();
+                if (downRightPiece != nullptr && downRightPiece->getIsWhite() != isWhite) {
                     addMove(row - 1, col + 1, board);
                 }
             }
             if (col - 1 >= 0) {
-                Piece* downLeftPiece = board.getBoard().at(row - 1).at(col - 1).getPiece();
-                if (downLeftPiece != nullptr && downLeftPiece -> getIsWhite() != getIsWhite()) {
+                Piece* downLeftPiece = board.getBoardRef().at(row - 1).at(col - 1).getPiece();
+                if (downLeftPiece != nullptr && downLeftPiece -> getIsWhite() != isWhite) {
                     addMove(row - 1, col - 1, board);
                 }
             }
         }
         if (row == 6) { // white pawn is on second rank.
-            if (board.getBoard().at(row - 2).at(col).getPiece() == nullptr 
-            && board.getBoard().at(row - 1).at(col).getPiece() == nullptr) {
+            if (board.getBoardRef().at(row - 2).at(col).getPiece() == nullptr 
+            && board.getBoardRef().at(row - 1).at(col).getPiece() == nullptr) {
                 addMove(row - 2, col, board);
             }
         }
     }
 }
-void Knight::calculatePossibleMoves(Board board, Tile currentTile) {
+
+void Knight::calculatePossibleMoves(Board& board, Tile& currentTile) {
     // Reset possibleMoves vector and retrieve row and col from mouse position. 
     possibleMoves = {};
     int row = currentTile.getX();
@@ -85,19 +86,19 @@ void Knight::calculatePossibleMoves(Board board, Tile currentTile) {
 
     auto& boardRef = board.getBoardRef();
     if ((row + 2 < 8) && (col - 1 >= 0) && (boardRef.at(row + 2).at(col - 1).getPiece() == nullptr
-    || boardRef.at(row + 2).at(col - 1).getPiece() -> getIsWhite() != getIsWhite())) {
+    || boardRef.at(row + 2).at(col - 1).getPiece() -> getIsWhite() != isWhite)) {
         possibleMoves.push_back(std::make_shared<Tile>(boardRef.at(row + 2).at(col - 1)));
     }
     if ((row + 1 < 8) && (col - 2 >= 0) && (boardRef.at(row + 1).at(col - 2).getPiece() == nullptr
-    || boardRef.at(row + 1).at(col - 2).getPiece() -> getIsWhite() != getIsWhite())) {
+    || boardRef.at(row + 1).at(col - 2).getPiece() -> getIsWhite() != isWhite)) {
         possibleMoves.push_back(std::make_shared<Tile>(boardRef.at(row + 1).at(col - 2)));
     }
     if ((row + 1 < 8) && (col + 2 < 8) && (boardRef.at(row + 1).at(col + 2).getPiece() == nullptr
-    || boardRef.at(row + 1).at(col + 2).getPiece() -> getIsWhite() != getIsWhite())) {
+    || boardRef.at(row + 1).at(col + 2).getPiece() -> getIsWhite() != isWhite)) {
         possibleMoves.push_back(std::make_shared<Tile>(boardRef.at(row + 1).at(col + 2)));
     }
     if ((row + 2 < 8) && (col + 1 < 8) && (boardRef.at(row + 2).at(col + 1).getPiece() == nullptr
-    || boardRef.at(row + 2).at(col + 1).getPiece() -> getIsWhite() != getIsWhite())) {
+    || boardRef.at(row + 2).at(col + 1).getPiece() -> getIsWhite() != isWhite)) {
         possibleMoves.push_back(std::make_shared<Tile>(boardRef.at(row + 2).at(col + 1)));
     }
     if ((row - 1 >= 0) && (col - 2 >= 0) && (boardRef.at(row - 1).at(col - 2).getPiece() == nullptr
@@ -105,15 +106,15 @@ void Knight::calculatePossibleMoves(Board board, Tile currentTile) {
         possibleMoves.push_back(std::make_shared<Tile>(boardRef.at(row - 1).at(col - 2)));
     }
     if ((row - 2 >= 0) && (col - 1 >= 0) && (boardRef.at(row - 2).at(col - 1).getPiece() == nullptr
-    || boardRef.at(row - 2).at(col - 1).getPiece() -> getIsWhite() != getIsWhite())) {
+    || boardRef.at(row - 2).at(col - 1).getPiece() -> getIsWhite() != isWhite)) {
         possibleMoves.push_back(std::make_shared<Tile>(boardRef.at(row - 2).at(col - 1)));
     }
     if ((row - 2 >= 0) && (col + 1 < 8) && (boardRef.at(row - 2).at(col + 1).getPiece() == nullptr
-    || boardRef.at(row - 2).at(col + 1).getPiece() -> getIsWhite() != this -> getIsWhite())) {
+    || boardRef.at(row - 2).at(col + 1).getPiece() -> getIsWhite() != isWhite)) {
         possibleMoves.push_back(std::make_shared<Tile>(boardRef.at(row - 2).at(col + 1)));
     }
     if ((row + 1 < 8) && (col + 2 < 8) && (boardRef.at(row + 1).at(col + 2).getPiece() == nullptr
-    || boardRef.at(row + 1).at(col + 2).getPiece() -> getIsWhite() != getIsWhite())) {
+    || boardRef.at(row + 1).at(col + 2).getPiece() -> getIsWhite() != isWhite)) {
         possibleMoves.push_back(std::make_shared<Tile>(boardRef.at(row + 1).at(col + 2)));
     }
 
@@ -122,7 +123,7 @@ void Knight::calculatePossibleMoves(Board board, Tile currentTile) {
 
 
 
-void Rook::calculatePossibleMoves(Board board, Tile currentTile) {
+void Rook::calculatePossibleMoves(Board& board, Tile& currentTile) {
     // Reset possibleMoves vector and retrieve row and col from mouse position. 
     possibleMoves = {};
     int row = currentTile.getX();
@@ -134,7 +135,7 @@ void Rook::calculatePossibleMoves(Board board, Tile currentTile) {
     addStraightMoves(row, col, board);
 }
 
-void Bishop::calculatePossibleMoves(Board board, Tile currentTile) {
+void Bishop::calculatePossibleMoves(Board& board, Tile& currentTile) {
     // Reset possibleMoves vector and retrieve row and col from mouse position. 
     possibleMoves = {};
     int row = currentTile.getX();
@@ -144,7 +145,7 @@ void Bishop::calculatePossibleMoves(Board board, Tile currentTile) {
     addDiagonalMoves(row, col, board);
 }
 
-void Queen::calculatePossibleMoves(Board board, Tile currentTile) {
+void Queen::calculatePossibleMoves(Board& board, Tile& currentTile) {
     // Reset possibleMoves vector and retrieve row and col from mouse position. 
     possibleMoves = {};
     int row = currentTile.getX();
@@ -154,7 +155,7 @@ void Queen::calculatePossibleMoves(Board board, Tile currentTile) {
     addStraightMoves(row, col, board);
 }
 
-void King::calculatePossibleMoves(Board board, Tile currentTile) {
+void King::calculatePossibleMoves(Board& board, Tile& currentTile) {
     // Reset possibleMoves vector and retrieve row and col from mouse position. 
     possibleMoves = {};
     int row = currentTile.getX();
@@ -170,7 +171,7 @@ void King::calculatePossibleMoves(Board board, Tile currentTile) {
                     int y = col + dy;
                     // If suggested square is either empty or occupied by enemy piece, it is a possible move.
                     if (boardRef.at(x).at(y).getPiece() == nullptr || 
-                    boardRef.at(x).at(y).getPiece() -> getIsWhite() != this -> getIsWhite()) {
+                    boardRef.at(x).at(y).getPiece() -> getIsWhite() != isWhite) {
                         possibleMoves.push_back(std::make_shared<Tile>(boardRef.at(x).at(y)));
                     }
                 }
@@ -201,7 +202,7 @@ void King::calculatePossibleMoves(Board board, Tile currentTile) {
 
 
 
-void Piece::addStraightMoves(int row, int col, Board board) {
+void Piece::addStraightMoves(int row, int col, Board& board) {
     auto& boardRef = board.getBoardRef();
     for (int i = row + 1; i < 8; i++) { // checking moves in the downwards direction
         Piece* piece = boardRef.at(i).at(col).getPiece();
@@ -261,7 +262,7 @@ void Piece::addStraightMoves(int row, int col, Board board) {
     }
 }
 
-void Piece::addDiagonalMoves(int row, int col, Board board) {
+void Piece::addDiagonalMoves(int row, int col, Board& board) {
     auto& boardRef = board.getBoardRef();
 
     for (int i = row + 1, j = col + 1; i < 8 && j < 8; i++, j++) { // diagonal down right
