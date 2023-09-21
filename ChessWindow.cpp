@@ -1,13 +1,9 @@
 #include "ChessWindow.h"
 #include <iostream>
 
- // my program seems to linearly take more memory as the game progresses, and I have no idea why.
- // do you think it has something to do with the play loop?
-
 // Constructor for ChessWindow.
 ChessWindow::ChessWindow(): AnimationWindow{400, 50, 800, 800, "Chess 2"}, gameOver{{300, 350}, 200, 100} {
     board = Board();
-    
 }
 
 // Plays the game.
@@ -18,7 +14,7 @@ void ChessWindow::play() {
     
     while (!should_close()) {
         // Handle inputs.
-        
+        wait_for(0.04);
        
         handleClick();
         
@@ -30,6 +26,7 @@ void ChessWindow::play() {
         drawPieces();
         
         // Next frame, reloop.
+        
         next_frame();
     }
 }
