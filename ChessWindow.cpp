@@ -1,18 +1,28 @@
 #include "ChessWindow.h"
 #include <iostream>
 
+ // my program seems to linearly take more memory as the game progresses, and I have no idea why.
+ // do you think it has something to do with the play loop?
+
 // Constructor for ChessWindow.
 ChessWindow::ChessWindow(): AnimationWindow{400, 50, 800, 800, "Chess 2"}, gameOver{{300, 350}, 200, 100} {
     board = Board();
+    
 }
 
 // Plays the game.
 void ChessWindow::play() {
-    
     // Main loop.
+    static bool lastLeftClickState = false;
+    static bool lastRightClickState = false;
+    
     while (!should_close()) {
         // Handle inputs.
+        
+       
         handleClick();
+        
+
         
         
         // Draw things.
@@ -24,7 +34,12 @@ void ChessWindow::play() {
     }
 }
 
+
 void ChessWindow::drawTiles() {
+
+    // clear board
+
+    
     bool isEven = false;
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
@@ -49,15 +64,21 @@ void ChessWindow::drawTiles() {
 
 // Draws pieces on board.
 void ChessWindow::drawPieces() {
+    std::vector<TDT4102::Image> renderedImages;
+
     for (auto& row: board.getBoardRef()) {
         for (Tile& tile: row) {
             if (tile.getPiece() != nullptr) {
                 // place image at current square
                 TDT4102::Image image = TDT4102::Image("img/" + tile.getPiece()->getImage());
+                renderedImages.push_back(image);
                 draw_image({tile.getY()*100, tile.getX()*100}, image, 100, 100);
+
             }
         }
     }
+
+    renderedImages.clear();
 }
 
 // Handles clicks every frame.
@@ -67,7 +88,7 @@ void ChessWindow::handleClick() {
 
     bool currentLeftClickState = is_left_mouse_button_down();
     bool currentRightClickState = is_right_mouse_button_down();
-
+    //if (!(currentRightClickState && !lastRightClickState) && !(currentLeftClickState && !lastLeftClickState)) return;
     if (currentRightClickState && !lastRightClickState) {
         // Convert coords to row and col
         TDT4102::Point mouseCoords = get_mouse_coordinates();
@@ -75,7 +96,7 @@ void ChessWindow::handleClick() {
         Tile& clickedTile = getTile(mouseCoords.x, mouseCoords.y);
         // If clicked tile has no piece, return
         if (clickedTile.getPiece() == nullptr) {
-            std::cout << "nullptr" << std::endl;
+            //std::cout << "nullptr" << std::endl;
             return;
         }
         // If it aint your turn, you cant check possible moves
@@ -84,18 +105,16 @@ void ChessWindow::handleClick() {
         // If clicked tile has a piece, calculate possible moves
         clickedTile.getPiece() -> calculatePossibleMoves(board, clickedTile);
         std::vector<std::shared_ptr<Tile>>& possibleMoves = clickedTile.getPiece() -> possibleMoves;
-        std::cout << "Possible moves: " << std::endl;
-        for (std::shared_ptr<Tile> tile: possibleMoves) {
-            std::cout << tile -> getY() << ", " << tile -> getX() << std::endl;
+        for (std::shared_ptr<Tile>& tile: possibleMoves) {
+            //std::cout << tile -> getY() << ", " << tile -> getX() << std::endl;
         }
 
         // Set isPossibleMove to true for all possible moves
-        for (std::shared_ptr<Tile> tile: possibleMoves) {
-            std::cout << "Color set" << std::endl;
+        for (std::shared_ptr<Tile>& tile: possibleMoves) {
+            //std::cout << "Color set" << std::endl;
             int x = tile -> getX();
             int y = tile -> getY();
             board.getBoardRef().at(x).at(y).setIsPossibleMove(true);
-            //std::cout << "isPossibleMove set to true for (" << x << ", " << y << ")" << std::endl; 
         }
 
         // Set isPossibleMove to false if the tile is not in possibleMoves, needs ref here
@@ -124,13 +143,9 @@ void ChessWindow::handleClick() {
         Tile& clickedTile = getTile(x, y);
         // That aint a piece
         if (clickedTile.getPiece() == nullptr) {
-            std::cout << "nullptr" << std::endl;
+            //std::cout << "nullptr" << std::endl;
             return;
         }
-        // Print "nullptr" to console if clicked tile has no piece
-
-
-
         // It aint your turn man
         if (clickedTile.getPiece() -> getIsWhite() != isWhitesTurn) return;
         // Clear coloring for possible moves.
@@ -138,7 +153,7 @@ void ChessWindow::handleClick() {
 
         // Calculate possible moves, so that random move is chosen cororectly. 
         clickedTile.getPiece() -> calculatePossibleMoves(board, clickedTile);
-        std::vector<std::shared_ptr<Tile>> possibleMoves = clickedTile.getPiece() -> possibleMoves;
+        std::vector<std::shared_ptr<Tile>>& possibleMoves = clickedTile.getPiece() -> possibleMoves;
         if (possibleMoves.size() == 0) return;
         // Create random number
         int generatedNumber = randomNumber(0, possibleMoves.size() - 1);
@@ -173,13 +188,13 @@ void ChessWindow::handleClick() {
         if (selectedPiece -> getPieceType() == PieceType::Pawn && (randomMove.getX() == 0 || randomMove.getX() == 7 )) {
             bool color = selectedPiece -> getIsWhite();
             randomMove.setPiece(std::make_unique<Queen>(Queen(color)));
-            std::cout << "Queen" << std::endl;
+            //std::cout << "Queen" << std::endl;
         }
        
         
         // Castle!
         else if (selectedPiece -> getPieceType() == PieceType::King && abs(randomMove.getY() - clickedTile.getY()) > 1) {
-            std::cout << abs(randomMove.getY() - clickedTile.getY()) << " abs." <<std::endl;
+            //std::cout << abs(randomMove.getY() - clickedTile.getY()) << " abs." <<std::endl;
             if (abs(randomMove.getY() - clickedTile.getY()) > 1) {
                 if (clickedTile.getY() > randomMove.getY()) { // castle queenside - left.
                     std::unique_ptr<Piece> castleRook = boardRef.at(y / 100).at((x / 100) - 4).movePiece();
@@ -198,7 +213,7 @@ void ChessWindow::handleClick() {
             }
         }
         else randomMove.setPiece(std::move(selectedPiece));
-        std::cout << "Move to: " << randomMove.getY() << ", " << randomMove.getX() << std::endl;
+        //std::cout << "Move to: " << randomMove.getY() << ", " << randomMove.getX() << std::endl;
         // std::cout << pieceTypeMap.at(selectedPiece -> getPieceType() ) << " moved." << std::endl;
         isWhitesTurn = !isWhitesTurn;
     }
@@ -206,6 +221,8 @@ void ChessWindow::handleClick() {
     // Set last state to current state.
     lastLeftClickState = currentLeftClickState;
     lastRightClickState = currentRightClickState;
+
+
 }
 
 // Clear all possible moves.
@@ -217,8 +234,7 @@ void ChessWindow::clearIsPossibleMove() {
     }
 }
 
-// Return clicked tile
-// ! This might have to return a reference?
+// Return clicked tile5
 Tile& ChessWindow::getTile(int x, int y) {
     return board.getBoardRef().at(y / 100).at(x / 100);
 }

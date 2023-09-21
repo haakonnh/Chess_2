@@ -25,8 +25,8 @@ class Tile {
         void setX(int x) { this->x = x; };
         void setY(int y) { this->y = y; };
         // get x and y
-        int getX() { return x; };
-        int getY() { return y; };
+        int getX() const { return x; };
+        int getY() const { return y; };
         void setIsPossibleMove(bool isPossibleMove) { this->isPossibleMove = isPossibleMove; };
         bool getIsPossibleMove() { return isPossibleMove; };
     private:

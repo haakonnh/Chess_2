@@ -278,7 +278,7 @@ void Piece::addDiagonalMoves(int row, int col, Board& board) {
             break;
         }
     }
-    for (int i = row + 1, j = col - 1; i < 8 && j >= 0; i++, j--) { // diagonal down right
+    for (int i = row + 1, j = col - 1; i < 8 && j >= 0; i++, j--) { // diagonal down left
         Piece* piece = boardRef.at(i).at(j).getPiece();
         if (piece == nullptr) {
             possibleMoves.push_back(std::make_shared<Tile>(boardRef.at(i).at(j)));
@@ -291,7 +291,7 @@ void Piece::addDiagonalMoves(int row, int col, Board& board) {
             break;
         }
     }
-    for (int i = row - 1, j = col + 1; i >= 0 && j < 8; i--, j++) { // diagonal down right
+    for (int i = row - 1, j = col + 1; i >= 0 && j < 8; i--, j++) { // diagonal up right
         Piece* piece = boardRef.at(i).at(j).getPiece();
         if (piece == nullptr) {
             possibleMoves.push_back(std::make_shared<Tile>(boardRef.at(i).at(j)));
@@ -304,7 +304,7 @@ void Piece::addDiagonalMoves(int row, int col, Board& board) {
             break;
         }
     }
-    for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) { // diagonal down right
+    for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) { // diagonal up left
         Piece* piece = boardRef.at(i).at(j).getPiece();
         if (piece == nullptr) {
             possibleMoves.push_back(std::make_shared<Tile>(boardRef.at(i).at(j)));

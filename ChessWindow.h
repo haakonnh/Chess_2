@@ -16,7 +16,7 @@ class ChessWindow: public TDT4102::AnimationWindow {
         void clearIsPossibleMove();
         Tile& getTile(int x, int y);
         int randomNumber(int lower, int higher);
-        int getIsWhitesTurn() {return isWhitesTurn;};
+        int getIsWhitesTurn() const {return isWhitesTurn;};
         void setIsWhitesTurn(bool isWhitesTurn) {this -> isWhitesTurn = isWhitesTurn;};
     private:
         Board board;

@@ -1,9 +1,11 @@
 #include "ChessWindow.h"
-#include "Board.h"
+#include <vector>
 
-/* Chess 2 - the worlds best game. */
+
 
 int main() {
+    std::vector<int> ok(10);
+
     ChessWindow chess2;
     chess2.play();
     chess2.wait_for_close();
