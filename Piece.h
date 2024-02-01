@@ -45,7 +45,7 @@ class Piece {
         void addMove(int row, int col, Board& board);
         
         void setPieceType(PieceType pieceType) {this -> pieceType = pieceType;};
-        PieceType getPieceType() {return pieceType;};
+        PieceType getPieceType() {return this -> pieceType;};
         void setHasMoved(bool hasMoved) {this -> hasMoved = hasMoved;};
         bool getHasMoved() {return hasMoved;};
 
@@ -67,6 +67,8 @@ class Pawn: public Piece {
         Pawn(bool isWhite): Piece(isWhite) {setPieceType(PieceType::Pawn);};
         std::string getImage() override { return getIsWhite() ? "WhitePawn.png" : "BlackPawn.png"; };
         void calculatePossibleMoves(Board& board, Tile& currentTile) override;
+
+        std::pair<bool, int> didMoveTwiceLastMove = {false, 0};
 };
 
 class Knight: public Piece {

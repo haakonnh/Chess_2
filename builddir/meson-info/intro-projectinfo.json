@@ -1,0 +1,1 @@
+{"version": "0.1", "descriptive_name": "Chess2", "subproject_dir": "subprojects", "subprojects": [{"name": "sdl2_windows", "version": "undefined", "descriptive_name": "sdl2_windows"}, {"name": "sdl2_image_windows", "version": "undefined", "descriptive_name": "sdl2_image_windows"}, {"name": "animationwindow", "version": "0.01", "descriptive_name": "animationwindow"}]}

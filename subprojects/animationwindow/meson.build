@@ -1,4 +1,4 @@
-project('animationwindow', ['c', 'cpp'], version: '0.01', default_options: ['cpp_std=c++17', 'default_library=static', 'buildtype=debugoptimized'])
+project('animationwindow', ['c', 'cpp'], version: '0.01', default_options: ['cpp_std=c++20', 'default_library=static', 'buildtype=debugoptimized'])
 
 if host_machine.system() == 'windows'
     sdl2_dep = subproject('sdl2_windows').get_variable('sdl2_windows_dep')

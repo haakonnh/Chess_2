@@ -1,0 +1,170 @@
+Build started at 2024-01-30T18:01:00.867128
+Main binary: C:\Program Files\Meson\meson.exe
+Build Options: -Dbuildtype=debug
+Python system: Windows
+The Meson build system
+Version: 0.64.1
+Source dir: C:\C++\Chess_2
+Build dir: C:\C++\Chess_2\builddir
+Build type: native build
+Project name: Chess2
+Project version: 0.1
+C++ compiler for the host machine: C:\mingw64\bin\clang++ (clang 14.0.4 "(built by Brecht Sanders) clang version 14.0.4")
+C++ linker for the host machine: C:\mingw64\bin\clang++ ld.bfd 2.38
+C++ compiler for the build machine: C:\mingw64\bin\clang++ (clang 14.0.4 "(built by Brecht Sanders) clang version 14.0.4")
+C++ linker for the build machine: C:\mingw64\bin\clang++ ld.bfd 2.38
+Build machine cpu family: x86_64
+Build machine cpu: x86_64
+Host machine cpu family: x86_64
+Host machine cpu: x86_64
+Target machine cpu family: x86_64
+Target machine cpu: x86_64
+
+Executing subproject sdl2_windows 
+
+Project name: sdl2_windows
+Project version: undefined
+C++ compiler for the host machine: C:\mingw64\bin\clang++ (clang 14.0.4 "(built by Brecht Sanders) clang version 14.0.4")
+C++ linker for the host machine: C:\mingw64\bin\clang++ ld.bfd 2.38
+C++ compiler for the build machine: C:\mingw64\bin\clang++ (clang 14.0.4 "(built by Brecht Sanders) clang version 14.0.4")
+C++ linker for the build machine: C:\mingw64\bin\clang++ ld.bfd 2.38
+Running compile:
+Working directory:  C:\C++\Chess_2\builddir\meson-private\tmp7cgt_r9j
+Command line:  C:\mingw64\bin\clang++ C:\C++\Chess_2\builddir\meson-private\tmp7cgt_r9j\testfile.cpp -o C:\C++\Chess_2\builddir\meson-private\tmp7cgt_r9j\output.exe -D_FILE_OFFSET_BITS=64 -O0 -fpermissive -Werror=implicit-function-declaration 
+
+Code:
+ #include<stdio.h>
+        
+        int main(void) {
+            printf("%ld\n", (long)(sizeof(void *)));
+            return 0;
+        }
+Compiler stdout:
+ 
+Compiler stderr:
+ 
+Program stdout:
+
+8
+
+Program stderr:
+
+
+Running compile:
+Working directory:  C:\C++\Chess_2\builddir\meson-private\tmpmw_ikw_l
+Command line:  C:\mingw64\bin\clang++ C:\C++\Chess_2\builddir\meson-private\tmpmw_ikw_l\testfile.cpp -o C:\C++\Chess_2\builddir\meson-private\tmpmw_ikw_l\output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -fpermissive -Werror=implicit-function-declaration -Werror=unknown-warning-option -Werror=unused-command-line-argument -Werror=ignored-optimization-argument --print-search-dirs 
+
+Code:
+ 
+Compiler stdout:
+ programs: =C:/mingw64/bin
+libraries: =C:/mingw64/lib/clang/14.0.4;C:/mingw64/lib/gcc/x86_64-w64-mingw32/12.1.0;C:/mingw64/x86_64-w64-mingw32/lib;C:/mingw64/lib;C:/mingw64/x86_64-w64-mingw32/sys-root/mingw/lib
+
+Compiler stderr:
+ 
+Library SDL2main found: YES
+Library SDL2 found: YES
+Build targets in project: 0
+Subproject sdl2_windows finished.
+
+Pkg-config binary for 1 is not cached.
+Pkg-config binary missing from cross or native file, or env var undefined.
+Trying a default Pkg-config fallback at pkg-config
+Did not find pkg-config by name 'pkg-config'
+Found Pkg-config: NO
+Pkg-config binary for machine 1 not found. Giving up.
+CMake binary for 1 is not cached
+CMake binary missing from cross or native file, or env var undefined.
+Trying a default CMake fallback at cmake
+Found CMake: C:\Program Files\CMake\bin\cmake.EXE (3.28.0)
+Extracting basic cmake information
+CMake Toolchain: Calling CMake once to generate the compiler state
+Calling CMake (['C:\\Program Files\\CMake\\bin\\cmake.EXE']) in C:\C++\Chess_2\builddir\meson-private\__CMake_compiler_info__ with:
+  - "--trace-expand"
+  - "--trace-format=json-v1"
+  - "--no-warn-unused-cli"
+  - "--trace-redirect=cmake_trace.txt"
+  - "-G"
+  - "Ninja"
+  - "-DCMAKE_TOOLCHAIN_FILE=C:/C++/Chess_2/builddir/meson-private/__CMake_compiler_info__/CMakeMesonTempToolchainFile.cmake"
+  - "."
+WARNING: CMake Toolchain: Failed to determine CMake compilers state
+Try CMake generator: auto
+Calling CMake (['C:\\Program Files\\CMake\\bin\\cmake.EXE']) in C:\C++\Chess_2\builddir\meson-private\cmake_animationwindow with:
+  - "--trace-expand"
+  - "--trace-format=json-v1"
+  - "--no-warn-unused-cli"
+  - "--trace-redirect=cmake_trace.txt"
+  - "-DCMAKE_TOOLCHAIN_FILE=C:/C++/Chess_2/builddir/meson-private/cmake_animationwindow/CMakeMesonToolchainFile.cmake"
+  - "."
+CMake trace warning: add_executable() non imported executables are not supported
+CMake TRACE: C:\C++\Chess_2\builddir\meson-private\cmake_animationwindow\CMakeFiles\CMakeScratch\TryCompile-y2ufa1\CMakeLists.txt:20 add_executable(['cmTC_3074a'])
+CMake trace warning: target_link_options() TARGET cmTC_3074a not found
+CMake TRACE: C:\C++\Chess_2\builddir\meson-private\cmake_animationwindow\CMakeFiles\CMakeScratch\TryCompile-y2ufa1\CMakeLists.txt:26 target_link_libraries(['cmTC_3074a', ''])
+CMake trace warning: add_executable() non imported executables are not supported
+CMake TRACE: C:\C++\Chess_2\builddir\meson-private\cmake_animationwindow\CMakeFiles\CMakeScratch\TryCompile-tmf5jv\CMakeLists.txt:20 add_executable(['cmTC_d7987'])
+CMake trace warning: target_link_options() TARGET cmTC_d7987 not found
+CMake TRACE: C:\C++\Chess_2\builddir\meson-private\cmake_animationwindow\CMakeFiles\CMakeScratch\TryCompile-tmf5jv\CMakeLists.txt:26 target_link_libraries(['cmTC_d7987', ''])
+  -- Module search paths:    ['C:/Program Files', 'C:/Program Files (x86)', 'C:/Program Files/CMake']
+  -- CMake root:             C:/Program Files/CMake/share/cmake-3.28
+  -- CMake architectures:    []
+  -- CMake lib search paths: ['lib', 'lib32', 'lib64', 'libx32', 'share']
+Preliminary CMake check failed. Aborting.
+Run-time dependency animationwindow found: NO (tried pkgconfig and cmake)
+Looking for a fallback subproject for the dependency animationwindow
+
+Executing subproject animationwindow 
+
+Project name: animationwindow
+Project version: 0.01
+C compiler for the host machine: C:\mingw64\bin\clang (clang 14.0.4 "(built by Brecht Sanders) clang version 14.0.4")
+C linker for the host machine: C:\mingw64\bin\clang ld.bfd 2.38
+C++ compiler for the host machine: C:\mingw64\bin\clang++ (clang 14.0.4 "(built by Brecht Sanders) clang version 14.0.4")
+C++ linker for the host machine: C:\mingw64\bin\clang++ ld.bfd 2.38
+C compiler for the build machine: C:\mingw64\bin\clang (clang 14.0.4 "(built by Brecht Sanders) clang version 14.0.4")
+C linker for the build machine: C:\mingw64\bin\clang ld.bfd 2.38
+C++ compiler for the build machine: C:\mingw64\bin\clang++ (clang 14.0.4 "(built by Brecht Sanders) clang version 14.0.4")
+C++ linker for the build machine: C:\mingw64\bin\clang++ ld.bfd 2.38
+
+Executing subproject animationwindow:sdl2_image_windows 
+
+Project name: sdl2_image_windows
+Project version: undefined
+C++ compiler for the host machine: C:\mingw64\bin\clang++ (clang 14.0.4 "(built by Brecht Sanders) clang version 14.0.4")
+C++ linker for the host machine: C:\mingw64\bin\clang++ ld.bfd 2.38
+C++ compiler for the build machine: C:\mingw64\bin\clang++ (clang 14.0.4 "(built by Brecht Sanders) clang version 14.0.4")
+C++ linker for the build machine: C:\mingw64\bin\clang++ ld.bfd 2.38
+Library SDL2_image found: YES
+Build targets in project: 0
+Subproject sdl2_image_windows finished.
+
+Build targets in project: 1
+Subproject animationwindow finished.
+
+Dependency animationwindow from subproject subprojects/animationwindow found: YES 0.01
+Build targets in project: 2
+
+Chess2 0.1
+
+  Subprojects
+    animationwindow   : YES
+    sdl2_image_windows: YES
+    sdl2_windows      : YES
+
+  User defined options
+    buildtype         : debug
+
+Found ninja-1.11.1 at "C:\Program Files\Meson\ninja.EXE"
+Running compile:
+Working directory:  C:\Users\haako\AppData\Local\Temp\tmp1igqu813
+Command line:  C:\mingw64\bin\clang++ C:\Users\haako\AppData\Local\Temp\tmp1igqu813\testfile.cpp -o C:\Users\haako\AppData\Local\Temp\tmp1igqu813\output.obj -D_FILE_OFFSET_BITS=64 -c -std=c++17 
+
+Code:
+ int i = static_cast<int>(0);
+Compiler stdout:
+ 
+Compiler stderr:
+ 
+Compiler accepts -std=c++17: YES
+Failed to guess install tag for c:\dummy
+Failed to guess install tag for c:\dummy

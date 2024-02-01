@@ -14,7 +14,7 @@ void ChessWindow::play() {
     
     while (!should_close()) {
         // Handle inputs.
-        wait_for(0.04);
+        wait_for(0.024);
        
         handleClick();
         
@@ -34,9 +34,6 @@ void ChessWindow::play() {
 
 void ChessWindow::drawTiles() {
 
-    // clear board
-
-    
     bool isEven = false;
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
@@ -80,6 +77,7 @@ void ChessWindow::drawPieces() {
 
 // Handles clicks every frame.
 void ChessWindow::handleClick() {
+    
     static bool lastLeftClickState = false;
     static bool lastRightClickState = false;
 
@@ -156,6 +154,8 @@ void ChessWindow::handleClick() {
         int generatedNumber = randomNumber(0, possibleMoves.size() - 1);
         // Generate random move
         auto randomTile = (possibleMoves.at(generatedNumber)).get();
+        // Move count
+        board.setMoveCount(board.getMoveCount() + 1);
 
         // Move piece to random square.
         std::unique_ptr<Piece> selectedPiece = clickedTile.movePiece();
@@ -184,8 +184,10 @@ void ChessWindow::handleClick() {
         // Logic for queening.
         if (selectedPiece -> getPieceType() == PieceType::Pawn && (randomMove.getX() == 0 || randomMove.getX() == 7 )) {
             bool color = selectedPiece -> getIsWhite();
-            randomMove.setPiece(std::make_unique<Queen>(Queen(color)));
-            //std::cout << "Queen" << std::endl;
+            selectedPiece = (std::make_unique<Queen>(Queen(color)));
+            std::cout << "Queened." << std::endl;
+            randomMove.setPiece(std::move(selectedPiece));
+
         }
        
         
@@ -194,24 +196,55 @@ void ChessWindow::handleClick() {
             //std::cout << abs(randomMove.getY() - clickedTile.getY()) << " abs." <<std::endl;
             if (abs(randomMove.getY() - clickedTile.getY()) > 1) {
                 if (clickedTile.getY() > randomMove.getY()) { // castle queenside - left.
+                    std::cout << "Queenside" << std::endl;
                     std::unique_ptr<Piece> castleRook = boardRef.at(y / 100).at((x / 100) - 4).movePiece();
                     boardRef.at(y / 100).at((x / 100) - 4).setPiece(nullptr);
                     randomMove.setPiece(std::move(selectedPiece));
                     boardRef.at(clickedTile.getX()).at(clickedTile.getY() - 1).setPiece(std::move(castleRook));    
                 }
                 else { // castle kingside - right
+                    std::cout << "Kingside" << std::endl;
                     std::unique_ptr<Piece> castleRook = boardRef.at(y / 100).at((x / 100) + 3).movePiece();
                     boardRef.at(y / 100).at((x / 100) + 3).setPiece(nullptr);
                     randomMove.setPiece(std::move(selectedPiece));
                     boardRef.at(clickedTile.getX()).at(clickedTile.getY()).setPiece(nullptr);
                     boardRef.at(clickedTile.getX()).at(clickedTile.getY() + 1).setPiece(std::move(castleRook));
-
+                    std::cout << "Kingside done" << std::endl;
                 }
             }
         }
+
+        
+        else if (selectedPiece -> getPieceType() == PieceType::Pawn) {
+            // Set en passant to true if pawn moves two squares.
+            if (abs(randomMove.getX() - clickedTile.getX()) > 1) {
+                Pawn* pawn = dynamic_cast<Pawn*>(selectedPiece.get());
+                pawn -> didMoveTwiceLastMove = {true, board.getMoveCount()};
+            }
+            // Do en passant if pawn moved diagonally and the square it moved to is empty.
+            else if (randomMove.getPiece() == nullptr && abs(randomMove.getY() - clickedTile.getY()) == 1) {
+                Pawn* pawn = dynamic_cast<Pawn*>(selectedPiece.get());
+                // Remove piece which got en passanted.
+                if (pawn -> getIsWhite()) {
+                    boardRef.at(randomMove.getX() + 1).at(randomMove.getY()).setPiece(nullptr);
+                }
+                else {
+                    boardRef.at(randomMove.getX() - 1).at(randomMove.getY()).setPiece(nullptr);
+                }
+
+            }
+            
+
+            std::cout << "En passant set to true" << std::endl;
+
+            randomMove.setPiece(std::move(selectedPiece));
+        }
+
         else randomMove.setPiece(std::move(selectedPiece));
+
         //std::cout << "Move to: " << randomMove.getY() << ", " << randomMove.getX() << std::endl;
         // std::cout << pieceTypeMap.at(selectedPiece -> getPieceType() ) << " moved." << std::endl;
+        
         isWhitesTurn = !isWhitesTurn;
     }
 

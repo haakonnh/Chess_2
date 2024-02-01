@@ -15,7 +15,11 @@ class Board {
         std::vector<std::vector<Tile>> getBoard() { return boardMatrix; };
         // get reference board
         std::vector<std::vector<Tile>>& getBoardRef() { return boardMatrix; };
+        int getMoveCount() { return moveCount; };
+        void setMoveCount(int moveCount) { this->moveCount = moveCount; };
+
 
     private:
         std::vector<std::vector<Tile>> boardMatrix;
+        int moveCount = 0;
 };

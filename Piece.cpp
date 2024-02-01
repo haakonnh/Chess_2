@@ -17,6 +17,7 @@ void Pawn::calculatePossibleMoves(Board& board, Tile& currentTile) {
 
     // This prints out the coordinates of pressed pawn. 
     std::cout << "Pawn at: " << col << ", " << row << std::endl;
+    std::cout << "Move count: " << board.getMoveCount() << std::endl;
 
     if (!isWhite) {
         if (row != 7) { // black pawn is not last rank.
@@ -46,9 +47,41 @@ void Pawn::calculatePossibleMoves(Board& board, Tile& currentTile) {
             }
         }
 
+        // En passant
+        if (row == 4) {
+            if (col + 1 < 8) {
+                Piece* leftPiece = board.getBoardRef().at(row).at(col + 1).getPiece();
+                if (leftPiece != nullptr && leftPiece -> getIsWhite() != isWhite) {
+                    if (leftPiece -> getPieceType() == PieceType::Pawn) {
+                        Pawn* pawn = dynamic_cast<Pawn*>(leftPiece);
+                        if (std::get<0>(pawn -> didMoveTwiceLastMove) && std::get<1>(pawn -> didMoveTwiceLastMove) == board.getMoveCount()) {
+                            if (board.getBoardRef().at(row).at(col + 1).getPiece() -> getIsWhite() != isWhite) {
+                                addMove(row + 1, col + 1, board);
+                            }
+                        }
+                    }
+                }
+            }
+            if (col - 1 >= 0) {
+                Piece* rightPiece = board.getBoardRef().at(row).at(col - 1).getPiece();
+                if (rightPiece != nullptr && rightPiece -> getIsWhite() != isWhite) {
+                    if (rightPiece -> getPieceType() == PieceType::Pawn) {
+                        Pawn* pawn = dynamic_cast<Pawn*>(rightPiece);
+                        if (std::get<0>(pawn -> didMoveTwiceLastMove) && std::get<1>(pawn -> didMoveTwiceLastMove) == board.getMoveCount()) {
+                            if (board.getBoardRef().at(row).at(col - 1).getPiece() -> getIsWhite() != isWhite) {
+                                addMove(row + 1, col - 1, board);
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+        
+
         
     }
-    else {
+    else if (isWhite) {
         if (row != 0) { // white pawn is not on second rank and not on last rank.
             if (board.getBoardRef().at(row - 1).at(col).getPiece() == nullptr) {
                 addMove(row - 1, col, board);
@@ -72,6 +105,36 @@ void Pawn::calculatePossibleMoves(Board& board, Tile& currentTile) {
             && board.getBoardRef().at(row - 1).at(col).getPiece() == nullptr) {
                 addMove(row - 2, col, board);
             }
+        }
+        // En passant
+        if (row == 3) {
+            if (col + 1 < 8) {
+                Piece* leftPiece = board.getBoardRef().at(row).at(col + 1).getPiece();
+                if (leftPiece != nullptr && leftPiece -> getIsWhite() != isWhite) {
+                    if (leftPiece -> getPieceType() == PieceType::Pawn) {
+                        Pawn* pawn = dynamic_cast<Pawn*>(leftPiece);
+                        if (std::get<0>(pawn -> didMoveTwiceLastMove) && std::get<1>(pawn -> didMoveTwiceLastMove) == board.getMoveCount()) {
+                            if (board.getBoardRef().at(row).at(col + 1).getPiece() -> getIsWhite() != isWhite) {
+                                addMove(row - 1, col + 1, board);
+                            }
+                        }
+                    }
+                }
+            }
+            if (col - 1 >= 0) {
+                Piece* rightPiece = board.getBoardRef().at(row).at(col - 1).getPiece();
+                if (rightPiece != nullptr && rightPiece -> getIsWhite() != isWhite) {
+                    if (rightPiece -> getPieceType() == PieceType::Pawn) {
+                        Pawn* pawn = dynamic_cast<Pawn*>(rightPiece);
+                        if (std::get<0>(pawn -> didMoveTwiceLastMove) && std::get<1>(pawn -> didMoveTwiceLastMove) == board.getMoveCount()) {
+                            if (board.getBoardRef().at(row).at(col - 1).getPiece() -> getIsWhite() != isWhite) {
+                                addMove(row - 1, col - 1, board);
+                            }
+                        }
+                    }
+                }
+            }
+            
         }
     }
 }

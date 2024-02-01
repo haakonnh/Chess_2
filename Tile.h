@@ -15,7 +15,7 @@ class Tile {
         // Move constructor
         Tile& operator=(Tile&& other) noexcept;
         // get piece
-        Piece* getPiece() { return piece.get();};
+        Piece* getPiece() { return piece.get(); };
 
         // move piece
         std::unique_ptr<Piece> movePiece() { return std::move(piece); };

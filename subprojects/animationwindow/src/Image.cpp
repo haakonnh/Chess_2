@@ -33,7 +33,4 @@ void TDT4102::Image::draw(SDL_Renderer *renderer, TDT4102::Point location, int i
     }
 
     SDL_RenderCopy(renderer, texture, nullptr, &imageBounds);
-
-    SDL_DestroyTexture(texture);
-    texture = nullptr;
 }
