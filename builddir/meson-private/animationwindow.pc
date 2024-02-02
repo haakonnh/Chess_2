@@ -1,9 +1,0 @@
-prefix=c:/
-includedir=${prefix}/include
-libdir=${prefix}/lib
-
-Name: animationwindow
-Description: Chess2: animationwindow
-Version: 0.01
-Libs: -L${libdir} -lanimationwindow -lmingw32 C:/C++/Chess_2/subprojects/sdl2_windows/lib/libSDL2main.a C:/C++/Chess_2/subprojects/sdl2_windows/lib/libSDL2.dll.a C:/C++/Chess_2/subprojects/sdl2_image_windows/lib/libSDL2_image.dll.a
-Cflags: -I${includedir}
