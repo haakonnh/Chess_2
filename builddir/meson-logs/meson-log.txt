@@ -1,4 +1,4 @@
-Build started at 2024-01-30T18:01:00.867128
+Build started at 2024-02-02T08:41:10.684589
 Main binary: C:\Program Files\Meson\meson.exe
 Build Options: -Dbuildtype=debug
 Python system: Windows
@@ -29,8 +29,8 @@ C++ linker for the host machine: C:\mingw64\bin\clang++ ld.bfd 2.38
 C++ compiler for the build machine: C:\mingw64\bin\clang++ (clang 14.0.4 "(built by Brecht Sanders) clang version 14.0.4")
 C++ linker for the build machine: C:\mingw64\bin\clang++ ld.bfd 2.38
 Running compile:
-Working directory:  C:\C++\Chess_2\builddir\meson-private\tmp7cgt_r9j
-Command line:  C:\mingw64\bin\clang++ C:\C++\Chess_2\builddir\meson-private\tmp7cgt_r9j\testfile.cpp -o C:\C++\Chess_2\builddir\meson-private\tmp7cgt_r9j\output.exe -D_FILE_OFFSET_BITS=64 -O0 -fpermissive -Werror=implicit-function-declaration 
+Working directory:  C:\C++\Chess_2\builddir\meson-private\tmphjp96el7
+Command line:  C:\mingw64\bin\clang++ C:\C++\Chess_2\builddir\meson-private\tmphjp96el7\testfile.cpp -o C:\C++\Chess_2\builddir\meson-private\tmphjp96el7\output.exe -D_FILE_OFFSET_BITS=64 -O0 -fpermissive -Werror=implicit-function-declaration 
 
 Code:
  #include<stdio.h>
@@ -51,8 +51,8 @@ Program stderr:
 
 
 Running compile:
-Working directory:  C:\C++\Chess_2\builddir\meson-private\tmpmw_ikw_l
-Command line:  C:\mingw64\bin\clang++ C:\C++\Chess_2\builddir\meson-private\tmpmw_ikw_l\testfile.cpp -o C:\C++\Chess_2\builddir\meson-private\tmpmw_ikw_l\output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -fpermissive -Werror=implicit-function-declaration -Werror=unknown-warning-option -Werror=unused-command-line-argument -Werror=ignored-optimization-argument --print-search-dirs 
+Working directory:  C:\C++\Chess_2\builddir\meson-private\tmp87uxc347
+Command line:  C:\mingw64\bin\clang++ C:\C++\Chess_2\builddir\meson-private\tmp87uxc347\testfile.cpp -o C:\C++\Chess_2\builddir\meson-private\tmp87uxc347\output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -fpermissive -Werror=implicit-function-declaration -Werror=unknown-warning-option -Werror=unused-command-line-argument -Werror=ignored-optimization-argument --print-search-dirs 
 
 Code:
  
@@ -98,13 +98,13 @@ Calling CMake (['C:\\Program Files\\CMake\\bin\\cmake.EXE']) in C:\C++\Chess_2\b
   - "-DCMAKE_TOOLCHAIN_FILE=C:/C++/Chess_2/builddir/meson-private/cmake_animationwindow/CMakeMesonToolchainFile.cmake"
   - "."
 CMake trace warning: add_executable() non imported executables are not supported
-CMake TRACE: C:\C++\Chess_2\builddir\meson-private\cmake_animationwindow\CMakeFiles\CMakeScratch\TryCompile-y2ufa1\CMakeLists.txt:20 add_executable(['cmTC_3074a'])
-CMake trace warning: target_link_options() TARGET cmTC_3074a not found
-CMake TRACE: C:\C++\Chess_2\builddir\meson-private\cmake_animationwindow\CMakeFiles\CMakeScratch\TryCompile-y2ufa1\CMakeLists.txt:26 target_link_libraries(['cmTC_3074a', ''])
+CMake TRACE: C:\C++\Chess_2\builddir\meson-private\cmake_animationwindow\CMakeFiles\CMakeScratch\TryCompile-s2cqne\CMakeLists.txt:20 add_executable(['cmTC_81566'])
+CMake trace warning: target_link_options() TARGET cmTC_81566 not found
+CMake TRACE: C:\C++\Chess_2\builddir\meson-private\cmake_animationwindow\CMakeFiles\CMakeScratch\TryCompile-s2cqne\CMakeLists.txt:26 target_link_libraries(['cmTC_81566', ''])
 CMake trace warning: add_executable() non imported executables are not supported
-CMake TRACE: C:\C++\Chess_2\builddir\meson-private\cmake_animationwindow\CMakeFiles\CMakeScratch\TryCompile-tmf5jv\CMakeLists.txt:20 add_executable(['cmTC_d7987'])
-CMake trace warning: target_link_options() TARGET cmTC_d7987 not found
-CMake TRACE: C:\C++\Chess_2\builddir\meson-private\cmake_animationwindow\CMakeFiles\CMakeScratch\TryCompile-tmf5jv\CMakeLists.txt:26 target_link_libraries(['cmTC_d7987', ''])
+CMake TRACE: C:\C++\Chess_2\builddir\meson-private\cmake_animationwindow\CMakeFiles\CMakeScratch\TryCompile-z6sg9b\CMakeLists.txt:20 add_executable(['cmTC_dd63e'])
+CMake trace warning: target_link_options() TARGET cmTC_dd63e not found
+CMake TRACE: C:\C++\Chess_2\builddir\meson-private\cmake_animationwindow\CMakeFiles\CMakeScratch\TryCompile-z6sg9b\CMakeLists.txt:26 target_link_libraries(['cmTC_dd63e', ''])
   -- Module search paths:    ['C:/Program Files', 'C:/Program Files (x86)', 'C:/Program Files/CMake']
   -- CMake root:             C:/Program Files/CMake/share/cmake-3.28
   -- CMake architectures:    []
@@ -156,8 +156,8 @@ Chess2 0.1
 
 Found ninja-1.11.1 at "C:\Program Files\Meson\ninja.EXE"
 Running compile:
-Working directory:  C:\Users\haako\AppData\Local\Temp\tmp1igqu813
-Command line:  C:\mingw64\bin\clang++ C:\Users\haako\AppData\Local\Temp\tmp1igqu813\testfile.cpp -o C:\Users\haako\AppData\Local\Temp\tmp1igqu813\output.obj -D_FILE_OFFSET_BITS=64 -c -std=c++17 
+Working directory:  C:\Users\haako\AppData\Local\Temp\tmpsdd6ewz2
+Command line:  C:\mingw64\bin\clang++ C:\Users\haako\AppData\Local\Temp\tmpsdd6ewz2\testfile.cpp -o C:\Users\haako\AppData\Local\Temp\tmpsdd6ewz2\output.obj -D_FILE_OFFSET_BITS=64 -c -std=c++17 
 
 Code:
  int i = static_cast<int>(0);

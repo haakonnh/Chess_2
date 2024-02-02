@@ -24,7 +24,7 @@ events:
       The output was:
       0
       MSBuild version 17.7.2+d6990bcfa for .NET Framework
-      Build started 1/30/2024 6:01:06 PM.
+      Build started 2/2/2024 8:41:17 AM.
       
       Project "C:\\C++\\Chess_2\\builddir\\meson-private\\cmake_animationwindow\\CMakeFiles\\3.28.0-rc1\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -52,7 +52,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:01.71
+      Time Elapsed 00:00:03.34
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -78,7 +78,7 @@ events:
       The output was:
       0
       MSBuild version 17.7.2+d6990bcfa for .NET Framework
-      Build started 1/30/2024 6:01:08 PM.
+      Build started 2/2/2024 8:41:22 AM.
       
       Project "C:\\C++\\Chess_2\\builddir\\meson-private\\cmake_animationwindow\\CMakeFiles\\3.28.0-rc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -106,7 +106,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:01.44
+      Time Elapsed 00:00:02.83
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -125,8 +125,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/C++/Chess_2/builddir/meson-private/cmake_animationwindow/CMakeFiles/CMakeScratch/TryCompile-y2ufa1"
-      binary: "C:/C++/Chess_2/builddir/meson-private/cmake_animationwindow/CMakeFiles/CMakeScratch/TryCompile-y2ufa1"
+      source: "C:/C++/Chess_2/builddir/meson-private/cmake_animationwindow/CMakeFiles/CMakeScratch/TryCompile-s2cqne"
+      binary: "C:/C++/Chess_2/builddir/meson-private/cmake_animationwindow/CMakeFiles/CMakeScratch/TryCompile-s2cqne"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
@@ -135,39 +135,39 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/C++/Chess_2/builddir/meson-private/cmake_animationwindow/CMakeFiles/CMakeScratch/TryCompile-y2ufa1'
+        Change Dir: 'C:/C++/Chess_2/builddir/meson-private/cmake_animationwindow/CMakeFiles/CMakeScratch/TryCompile-s2cqne'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_3074a.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_81566.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.7.2+d6990bcfa for .NET Framework
-        Build started 1/30/2024 6:01:10 PM.
+        Build started 2/2/2024 8:41:25 AM.
         
-        Project "C:\\C++\\Chess_2\\builddir\\meson-private\\cmake_animationwindow\\CMakeFiles\\CMakeScratch\\TryCompile-y2ufa1\\cmTC_3074a.vcxproj" on node 1 (default targets).
+        Project "C:\\C++\\Chess_2\\builddir\\meson-private\\cmake_animationwindow\\CMakeFiles\\CMakeScratch\\TryCompile-s2cqne\\cmTC_81566.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_3074a.dir\\Debug\\".
-          Creating directory "C:\\C++\\Chess_2\\builddir\\meson-private\\cmake_animationwindow\\CMakeFiles\\CMakeScratch\\TryCompile-y2ufa1\\Debug\\".
-          Creating directory "cmTC_3074a.dir\\Debug\\cmTC_3074a.tlog\\".
+          Creating directory "cmTC_81566.dir\\Debug\\".
+          Creating directory "C:\\C++\\Chess_2\\builddir\\meson-private\\cmake_animationwindow\\CMakeFiles\\CMakeScratch\\TryCompile-s2cqne\\Debug\\".
+          Creating directory "cmTC_81566.dir\\Debug\\cmTC_81566.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_3074a.dir\\Debug\\cmTC_3074a.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_3074a.dir\\Debug\\cmTC_3074a.tlog\\unsuccessfulbuild".
+          Creating "cmTC_81566.dir\\Debug\\cmTC_81566.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_81566.dir\\Debug\\cmTC_81566.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_3074a.dir\\Debug\\\\" /Fd"cmTC_3074a.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCCompilerABI.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_81566.dir\\Debug\\\\" /Fd"cmTC_81566.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCCompilerABI.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.37.32824 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_81566.dir\\Debug\\\\" /Fd"cmTC_81566.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCCompilerABI.c"
           CMakeCCompilerABI.c
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_3074a.dir\\Debug\\\\" /Fd"cmTC_3074a.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCCompilerABI.c"
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\C++\\Chess_2\\builddir\\meson-private\\cmake_animationwindow\\CMakeFiles\\CMakeScratch\\TryCompile-y2ufa1\\Debug\\cmTC_3074a.exe" /INCREMENTAL /ILK:"cmTC_3074a.dir\\Debug\\cmTC_3074a.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/C++/Chess_2/builddir/meson-private/cmake_animationwindow/CMakeFiles/CMakeScratch/TryCompile-y2ufa1/Debug/cmTC_3074a.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/C++/Chess_2/builddir/meson-private/cmake_animationwindow/CMakeFiles/CMakeScratch/TryCompile-y2ufa1/Debug/cmTC_3074a.lib" /MACHINE:X64  /machine:x64 cmTC_3074a.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_3074a.vcxproj -> C:\\C++\\Chess_2\\builddir\\meson-private\\cmake_animationwindow\\CMakeFiles\\CMakeScratch\\TryCompile-y2ufa1\\Debug\\cmTC_3074a.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\C++\\Chess_2\\builddir\\meson-private\\cmake_animationwindow\\CMakeFiles\\CMakeScratch\\TryCompile-s2cqne\\Debug\\cmTC_81566.exe" /INCREMENTAL /ILK:"cmTC_81566.dir\\Debug\\cmTC_81566.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/C++/Chess_2/builddir/meson-private/cmake_animationwindow/CMakeFiles/CMakeScratch/TryCompile-s2cqne/Debug/cmTC_81566.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/C++/Chess_2/builddir/meson-private/cmake_animationwindow/CMakeFiles/CMakeScratch/TryCompile-s2cqne/Debug/cmTC_81566.lib" /MACHINE:X64  /machine:x64 cmTC_81566.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_81566.vcxproj -> C:\\C++\\Chess_2\\builddir\\meson-private\\cmake_animationwindow\\CMakeFiles\\CMakeScratch\\TryCompile-s2cqne\\Debug\\cmTC_81566.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_3074a.dir\\Debug\\cmTC_3074a.tlog\\unsuccessfulbuild".
-          Touching "cmTC_3074a.dir\\Debug\\cmTC_3074a.tlog\\cmTC_3074a.lastbuildstate".
-        Done Building Project "C:\\C++\\Chess_2\\builddir\\meson-private\\cmake_animationwindow\\CMakeFiles\\CMakeScratch\\TryCompile-y2ufa1\\cmTC_3074a.vcxproj" (default targets).
+          Deleting file "cmTC_81566.dir\\Debug\\cmTC_81566.tlog\\unsuccessfulbuild".
+          Touching "cmTC_81566.dir\\Debug\\cmTC_81566.tlog\\cmTC_81566.lastbuildstate".
+        Done Building Project "C:\\C++\\Chess_2\\builddir\\meson-private\\cmake_animationwindow\\CMakeFiles\\CMakeScratch\\TryCompile-s2cqne\\cmTC_81566.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:01.41
+        Time Elapsed 00:00:02.82
         
       exitCode: 0
   -
@@ -179,8 +179,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/C++/Chess_2/builddir/meson-private/cmake_animationwindow/CMakeFiles/CMakeScratch/TryCompile-tmf5jv"
-      binary: "C:/C++/Chess_2/builddir/meson-private/cmake_animationwindow/CMakeFiles/CMakeScratch/TryCompile-tmf5jv"
+      source: "C:/C++/Chess_2/builddir/meson-private/cmake_animationwindow/CMakeFiles/CMakeScratch/TryCompile-z6sg9b"
+      binary: "C:/C++/Chess_2/builddir/meson-private/cmake_animationwindow/CMakeFiles/CMakeScratch/TryCompile-z6sg9b"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
@@ -189,39 +189,39 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/C++/Chess_2/builddir/meson-private/cmake_animationwindow/CMakeFiles/CMakeScratch/TryCompile-tmf5jv'
+        Change Dir: 'C:/C++/Chess_2/builddir/meson-private/cmake_animationwindow/CMakeFiles/CMakeScratch/TryCompile-z6sg9b'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_d7987.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_dd63e.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.7.2+d6990bcfa for .NET Framework
-        Build started 1/30/2024 6:01:12 PM.
+        Build started 2/2/2024 8:41:29 AM.
         
-        Project "C:\\C++\\Chess_2\\builddir\\meson-private\\cmake_animationwindow\\CMakeFiles\\CMakeScratch\\TryCompile-tmf5jv\\cmTC_d7987.vcxproj" on node 1 (default targets).
+        Project "C:\\C++\\Chess_2\\builddir\\meson-private\\cmake_animationwindow\\CMakeFiles\\CMakeScratch\\TryCompile-z6sg9b\\cmTC_dd63e.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_d7987.dir\\Debug\\".
-          Creating directory "C:\\C++\\Chess_2\\builddir\\meson-private\\cmake_animationwindow\\CMakeFiles\\CMakeScratch\\TryCompile-tmf5jv\\Debug\\".
-          Creating directory "cmTC_d7987.dir\\Debug\\cmTC_d7987.tlog\\".
+          Creating directory "cmTC_dd63e.dir\\Debug\\".
+          Creating directory "C:\\C++\\Chess_2\\builddir\\meson-private\\cmake_animationwindow\\CMakeFiles\\CMakeScratch\\TryCompile-z6sg9b\\Debug\\".
+          Creating directory "cmTC_dd63e.dir\\Debug\\cmTC_dd63e.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_d7987.dir\\Debug\\cmTC_d7987.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_d7987.dir\\Debug\\cmTC_d7987.tlog\\unsuccessfulbuild".
+          Creating "cmTC_dd63e.dir\\Debug\\cmTC_dd63e.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_dd63e.dir\\Debug\\cmTC_dd63e.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d7987.dir\\Debug\\\\" /Fd"cmTC_d7987.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_dd63e.dir\\Debug\\\\" /Fd"cmTC_dd63e.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.37.32824 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
           CMakeCXXCompilerABI.cpp
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d7987.dir\\Debug\\\\" /Fd"cmTC_d7987.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_dd63e.dir\\Debug\\\\" /Fd"cmTC_dd63e.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\C++\\Chess_2\\builddir\\meson-private\\cmake_animationwindow\\CMakeFiles\\CMakeScratch\\TryCompile-tmf5jv\\Debug\\cmTC_d7987.exe" /INCREMENTAL /ILK:"cmTC_d7987.dir\\Debug\\cmTC_d7987.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/C++/Chess_2/builddir/meson-private/cmake_animationwindow/CMakeFiles/CMakeScratch/TryCompile-tmf5jv/Debug/cmTC_d7987.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/C++/Chess_2/builddir/meson-private/cmake_animationwindow/CMakeFiles/CMakeScratch/TryCompile-tmf5jv/Debug/cmTC_d7987.lib" /MACHINE:X64  /machine:x64 cmTC_d7987.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_d7987.vcxproj -> C:\\C++\\Chess_2\\builddir\\meson-private\\cmake_animationwindow\\CMakeFiles\\CMakeScratch\\TryCompile-tmf5jv\\Debug\\cmTC_d7987.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\C++\\Chess_2\\builddir\\meson-private\\cmake_animationwindow\\CMakeFiles\\CMakeScratch\\TryCompile-z6sg9b\\Debug\\cmTC_dd63e.exe" /INCREMENTAL /ILK:"cmTC_dd63e.dir\\Debug\\cmTC_dd63e.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/C++/Chess_2/builddir/meson-private/cmake_animationwindow/CMakeFiles/CMakeScratch/TryCompile-z6sg9b/Debug/cmTC_dd63e.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/C++/Chess_2/builddir/meson-private/cmake_animationwindow/CMakeFiles/CMakeScratch/TryCompile-z6sg9b/Debug/cmTC_dd63e.lib" /MACHINE:X64  /machine:x64 cmTC_dd63e.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_dd63e.vcxproj -> C:\\C++\\Chess_2\\builddir\\meson-private\\cmake_animationwindow\\CMakeFiles\\CMakeScratch\\TryCompile-z6sg9b\\Debug\\cmTC_dd63e.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_d7987.dir\\Debug\\cmTC_d7987.tlog\\unsuccessfulbuild".
-          Touching "cmTC_d7987.dir\\Debug\\cmTC_d7987.tlog\\cmTC_d7987.lastbuildstate".
-        Done Building Project "C:\\C++\\Chess_2\\builddir\\meson-private\\cmake_animationwindow\\CMakeFiles\\CMakeScratch\\TryCompile-tmf5jv\\cmTC_d7987.vcxproj" (default targets).
+          Deleting file "cmTC_dd63e.dir\\Debug\\cmTC_dd63e.tlog\\unsuccessfulbuild".
+          Touching "cmTC_dd63e.dir\\Debug\\cmTC_dd63e.tlog\\cmTC_dd63e.lastbuildstate".
+        Done Building Project "C:\\C++\\Chess_2\\builddir\\meson-private\\cmake_animationwindow\\CMakeFiles\\CMakeScratch\\TryCompile-z6sg9b\\cmTC_dd63e.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:01.36
+        Time Elapsed 00:00:02.83
         
       exitCode: 0
 ...

@@ -226,8 +226,8 @@ CMAKE_STRIP:FILEPATH=C:/mingw64/bin/llvm-strip.exe
 //Path to a program.
 CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 
-//The CMake toolchain file
-CMAKE_TOOLCHAIN_FILE:FILEPATH=C:/C++/Chess_2/builddir/meson-private/__CMake_compiler_info__/CMakeMesonTempToolchainFile.cmake
+//No help, variable specified on the command line.
+CMAKE_TOOLCHAIN_FILE:UNINITIALIZED=C:/C++/Chess_2/builddir/meson-private/__CMake_compiler_info__/CMakeMesonTempToolchainFile.cmake
 
 //If this value is on, makefiles will be generated without the
 // .SILENT directive, and all commands will be echoed to the console
