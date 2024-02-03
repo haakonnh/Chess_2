@@ -64,5 +64,6 @@
         "thread": "cpp",
         "cinttypes": "cpp",
         "typeinfo": "cpp"
-    }
+},
+"C_Cpp.default.compileCommands": "c:\\C++\\Chess_2\\builddir/compile_commands.json"
 }

@@ -4,7 +4,7 @@
             "name": "Build and Run Debug",
             "type": "lldb",
             "request": "launch",
-            "program": "${workspaceFolder}/builddir/program",
+            "program": "${workspaceFolder}/builddir/Sjakk2",
             "args": [],
             "cwd": "${workspaceFolder}",
             "preLaunchTask": "Build Executable",

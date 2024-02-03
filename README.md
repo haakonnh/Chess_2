@@ -1,3 +1,1 @@
-Sjakk 2!!!!
-Beste spill!!!
-Pass på, sjakk 2 er farlig avhengighetskapende.
+To play the game, extract the release zip-file and run the .exe file.
