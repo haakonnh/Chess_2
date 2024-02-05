@@ -27,7 +27,7 @@ endif
 src = []
 
 exe = executable(
-  'program',
+  'Sjakk2',
   src,
 'Board.cpp',
 'ChessWindow.cpp',

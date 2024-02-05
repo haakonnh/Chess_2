@@ -37,7 +37,6 @@ void ChessWindow::drawTiles() {
     bool isEven = false;
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-
                 // Draws a green square if the tile is a possible move.
                 if (board.getBoardRef().at(i).at(j).getIsPossibleMove()) {
                     draw_rectangle({j*100, i*100}, 100, 100, TDT4102::Color::light_green);
