@@ -22,5 +22,6 @@ class ChessWindow: public TDT4102::AnimationWindow {
         Board board;
         bool isWhitesTurn = true;
         bool gameIsOver = false;
+        int tileSize = 80;
         TDT4102::TextInput gameOver;
 };

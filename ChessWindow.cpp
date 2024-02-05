@@ -2,7 +2,7 @@
 #include <iostream>
 
 // Constructor for ChessWindow.
-ChessWindow::ChessWindow(): AnimationWindow{400, 50, 800, 800, "Chess 2"}, gameOver{{300, 350}, 200, 100} {
+ChessWindow::ChessWindow(): AnimationWindow{400, 50, 640, 640, "Chess 2"}, gameOver{{300, 350}, 200, 100} {
     board = Board();
 }
 
@@ -14,7 +14,7 @@ void ChessWindow::play() {
     
     while (!should_close()) {
         // Handle inputs.
-        wait_for(0.024);
+        wait_for(0.018);
        
         handleClick();
         
@@ -33,21 +33,30 @@ void ChessWindow::play() {
 
 
 void ChessWindow::drawTiles() {
+    // autosizing of tiles and pieces in the window
+    if (width() != tileSize * 8 && height() != tileSize * 8) {
+        if (width() < height()) {
+            tileSize = width() / 8;
+        }
+        else {
+            tileSize = height() / 8;
+        }
+    }
 
     bool isEven = false;
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 // Draws a green square if the tile is a possible move.
                 if (board.getBoardRef().at(i).at(j).getIsPossibleMove()) {
-                    draw_rectangle({j*100, i*100}, 100, 100, TDT4102::Color::light_green);
+                    draw_rectangle({j*tileSize, i*tileSize}, tileSize, tileSize, TDT4102::Color::light_green);
                 }
                 
                 // Draws a square with alternating colors.
                 else if (isEven) {  
-                    draw_rectangle({j*100, i*100}, 100, 100, TDT4102::Color::dark_khaki);
+                    draw_rectangle({j*tileSize, i*tileSize}, tileSize, tileSize, TDT4102::Color::dark_khaki);
                 }
                 else if (!isEven) {
-                    draw_rectangle({j*100, i*100}, 100, 100, TDT4102::Color::mint_cream);
+                    draw_rectangle({j*tileSize, i*tileSize}, tileSize, tileSize, TDT4102::Color::mint_cream);
                 }
                 isEven = !isEven;
             }
@@ -65,7 +74,7 @@ void ChessWindow::drawPieces() {
                 // place image at current square
                 TDT4102::Image image = TDT4102::Image("img/" + tile.getPiece()->getImage());
                 renderedImages.push_back(image);
-                draw_image({tile.getY()*100, tile.getX()*100}, image, 100, 100);
+                draw_image({tile.getY()*tileSize, tile.getX()*tileSize}, image, tileSize, tileSize);
 
             }
         }
@@ -160,7 +169,7 @@ void ChessWindow::handleClick() {
         std::unique_ptr<Piece> selectedPiece = clickedTile.movePiece();
         auto& boardRef = board.getBoardRef();
         Tile& randomMove = boardRef.at(randomTile -> getX()).at(randomTile -> getY());
-        boardRef.at(y / 100).at(x / 100).setPiece(nullptr);
+        boardRef.at(y / tileSize).at(x / tileSize).setPiece(nullptr);
 
         // This is game over.
         if (randomMove.getPiece() != nullptr && randomMove.getPiece() -> getPieceType() == PieceType::King) {
@@ -196,15 +205,15 @@ void ChessWindow::handleClick() {
             if (abs(randomMove.getY() - clickedTile.getY()) > 1) {
                 if (clickedTile.getY() > randomMove.getY()) { // castle queenside - left.
                     std::cout << "Queenside" << std::endl;
-                    std::unique_ptr<Piece> castleRook = boardRef.at(y / 100).at((x / 100) - 4).movePiece();
-                    boardRef.at(y / 100).at((x / 100) - 4).setPiece(nullptr);
+                    std::unique_ptr<Piece> castleRook = boardRef.at(y / tileSize).at((x / tileSize) - 4).movePiece();
+                    boardRef.at(y / tileSize).at((x / tileSize) - 4).setPiece(nullptr);
                     randomMove.setPiece(std::move(selectedPiece));
                     boardRef.at(clickedTile.getX()).at(clickedTile.getY() - 1).setPiece(std::move(castleRook));    
                 }
                 else { // castle kingside - right
                     std::cout << "Kingside" << std::endl;
-                    std::unique_ptr<Piece> castleRook = boardRef.at(y / 100).at((x / 100) + 3).movePiece();
-                    boardRef.at(y / 100).at((x / 100) + 3).setPiece(nullptr);
+                    std::unique_ptr<Piece> castleRook = boardRef.at(y / tileSize).at((x / tileSize) + 3).movePiece();
+                    boardRef.at(y / tileSize).at((x / tileSize) + 3).setPiece(nullptr);
                     randomMove.setPiece(std::move(selectedPiece));
                     boardRef.at(clickedTile.getX()).at(clickedTile.getY()).setPiece(nullptr);
                     boardRef.at(clickedTile.getX()).at(clickedTile.getY() + 1).setPiece(std::move(castleRook));
@@ -265,7 +274,7 @@ void ChessWindow::clearIsPossibleMove() {
 
 // Return clicked tile5
 Tile& ChessWindow::getTile(int x, int y) {
-    return board.getBoardRef().at(y / 100).at(x / 100);
+    return board.getBoardRef().at(y / tileSize).at(x / tileSize);
 }
 
 // Return random number in specific range
@@ -275,3 +284,8 @@ int ChessWindow::randomNumber(int lower, int higher) {
     std::uniform_int_distribution<int> dis(lower, higher);
     return dis(gen);
 }
+
+// Image.cpp 
+
+ //   SDL_DestroyTexture(texture);
+ //   texture = nullptr;
